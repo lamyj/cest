@@ -8,7 +8,11 @@ def get_ppm(path):
     with open(path) as fd:
         meta_data = json.load(fd)
     
-    data = json.loads(base64.b64decode(meta_data["EncapsulatedDocument"][0]))
+    encapsulated = base64.b64decode(meta_data["EncapsulatedDocument"][0])
+    if encapsulated[-1] == 0:
+        encapsulated = encapsulated[:-1]
+    data = json.loads(encapsulated)
+    
     data_set = dicomifier.bruker.Dataset()
     data_set.loads(data["acqp"])
     data_set.loads(data["method"])
