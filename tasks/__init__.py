@@ -1,0 +1,1 @@
+from .wassr import WASSR
