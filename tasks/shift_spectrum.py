@@ -8,16 +8,15 @@ import spire
 from . import utils
 
 class ShiftSpectrum(spire.TaskFactory):
-    def __init__(self, image, B0, shifted):
+    def __init__(self, image, meta_data, B0, shifted):
         spire.TaskFactory.__init__(self, str(shifted))
-        self.file_dep = [image, B0]
+        self.file_dep = [image, meta_data, B0]
         self.targets = [shifted]
-        self.actions = [(__class__.action, (image, B0, shifted))]
+        self.actions = [(__class__.action, (image, meta_data, B0, shifted))]
     
     @staticmethod
-    def action(image_path, B0_path, shifted_path):
+    def action(image_path, meta_data_path, B0_path, shifted_path):
         # Get the frequency information from the meta-data
-        meta_data_path = re.sub("\.nii(\.gz)?$", ".json", str(image_path))
         ppm = utils.get_ppm(meta_data_path)
         
         # Load the image and the B0 map
@@ -31,6 +30,7 @@ class ShiftSpectrum(spire.TaskFactory):
         shifted_ppm_flat = shifted_ppm.reshape(-1, shifted_ppm.shape[-1])
         data_flat = data.reshape(-1, data.shape[-1])
         shifted_data_flat = numpy.zeros_like(data_flat)
+        # NOTE: is linear interpolation the best choice?
         for index, (x, fp) in enumerate(zip(shifted_ppm_flat, data_flat)):
             shifted_data_flat[index] = numpy.interp(x, ppm, fp)
         

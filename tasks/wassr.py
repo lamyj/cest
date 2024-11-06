@@ -8,16 +8,18 @@ import spire
 from . import utils
 
 class WASSR(spire.TaskFactory):
-    def __init__(self, image, wassr, delta_ppm=0.001, ppm_range=None):
+    def __init__(self, image, meta_data, wassr, delta_ppm=0.001, ppm_range=None):
         spire.TaskFactory.__init__(self, str(wassr))
-        self.file_dep = [image]
+        self.file_dep = [image, meta_data]
         self.targets = [wassr]
-        self.actions = [(__class__.action, (image, wassr, delta_ppm, ppm_range))]
+        self.actions = [
+            (__class__.action, (image, meta_data, wassr, delta_ppm, ppm_range))]
     
     @staticmethod
-    def action(image_path, wassr_path, delta_ppm=0.001, ppm_range=None):
+    def action(
+            image_path, meta_data_path, wassr_path,
+            delta_ppm=0.001, ppm_range=None):
         # Get the frequency information from the meta-data
-        meta_data_path = re.sub("\.nii(\.gz)?$", ".json", str(image_path))
         ppm = utils.get_ppm(meta_data_path)
         
         # Load the image data
