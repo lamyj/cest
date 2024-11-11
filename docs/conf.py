@@ -1,0 +1,27 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(".."))
+
+project = "CEST toolbox"
+copyright = "2024, ICube, University of Strasbourg-CNRS"
+author = "Julien Lamy"
+
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon"]
+
+napoleon_preprocess_types = True
+
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+
+autodoc_default_options = {
+    "member-order": "bysource"
+}
+
+html_theme = "furo"
+html_static_path = ["_static"]
+html_css_files = [
+    "css/style.css",
+]
+html_show_sphinx = False
+
