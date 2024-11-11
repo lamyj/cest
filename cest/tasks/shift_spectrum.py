@@ -8,6 +8,27 @@ import spire
 from . import utils
 
 class ShiftSpectrum(spire.TaskFactory):
+    """Shift a Z-spectrum as described in the [WASSR]_ method.
+    
+    Parameters
+    ----------
+    image : path_like
+        Path to the source Z-spectrum image
+    meta_data : path_like
+        Path to the meta-data related to the source image
+    B0 : path_like
+        Path to the frequency shift map
+    shifted : path_like
+        Path to the target shifted Z-spectrum
+    
+    References
+    ----------
+    .. [WASSR] *Water saturation shift referencing (WASSR) for chemical \
+        exchange saturation transfer (CEST) experiments*, Kim et al., Magnetic \
+        Resonance in Medicine 61(6), 2009. \
+        `doi:10.1002/mrm.21873 <https://doi.org/10.1002/mrm.21873>`_.
+    """
+    
     def __init__(self, image, meta_data, B0, shifted):
         spire.TaskFactory.__init__(self, str(shifted))
         self.file_dep = [image, meta_data, B0]
@@ -15,12 +36,12 @@ class ShiftSpectrum(spire.TaskFactory):
         self.actions = [(__class__.action, (image, meta_data, B0, shifted))]
     
     @staticmethod
-    def action(image_path, meta_data_path, B0_path, shifted_path):
+    def action(image, meta_data, B0, shifted):
         # Get the frequency information from the meta-data
-        ppm = utils.get_ppm(meta_data_path)
+        ppm = utils.get_ppm(meta_data)
         
         # Load the image and the B0 map
-        image, B0_image = [nibabel.load(x) for x in [image_path, B0_path]]
+        image, B0_image = [nibabel.load(x) for x in [image, B0]]
         data, B0_data = [numpy.array(x.dataobj) for x in [image, B0_image]]
         
         # Correct the nominal voxel-wise using the B0 map
@@ -36,5 +57,4 @@ class ShiftSpectrum(spire.TaskFactory):
         
         shifted_data = shifted_data_flat.reshape(data.shape)
         
-        nibabel.save(
-            nibabel.Nifti1Image(shifted_data, image.affine), shifted_path)
+        nibabel.save(nibabel.Nifti1Image(shifted_data, image.affine), shifted)

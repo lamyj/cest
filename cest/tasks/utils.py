@@ -5,6 +5,14 @@ import dicomifier
 import numpy
 
 def get_ppm(path):
+    """
+    Return the frequency offsets as PPM from the meta-data.
+    
+    Parameters
+    ----------
+    path : path_like
+        Path to the meta-data
+    """
     with open(path) as fd:
         meta_data = json.load(fd)
     

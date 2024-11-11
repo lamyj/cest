@@ -13,7 +13,7 @@ class WASSR(spire.TaskFactory):
     Parameters
     ----------
     image : path_like
-        Path to the source image
+        Path to the source Z-spectrum image
     meta_data : path_like
         Path to the meta-data related to the source image
     wassr : path_like
@@ -30,7 +30,6 @@ class WASSR(spire.TaskFactory):
         exchange saturation transfer (CEST) experiments*, Kim et al., Magnetic \
         Resonance in Medicine 61(6), 2009. \
         `doi:10.1002/mrm.21873 <https://doi.org/10.1002/mrm.21873>`_.
-    
     """
         
     def __init__(self, image, meta_data, wassr, delta_ppm=0.001, ppm_range=None):
