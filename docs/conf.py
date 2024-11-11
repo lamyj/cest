@@ -3,7 +3,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
-project = "CEST toolbox"
+project = "CEST Toolbox"
 copyright = "2024, ICube, University of Strasbourg-CNRS"
 author = "Julien Lamy"
 
