@@ -22,7 +22,7 @@ import cest
 cest.wassr("z_spectrum.nii.gz", "z_spectrum.json", "delta_ppm.nii.gz")
 ```
 
-The documentation of individual functions is described in the [API documentation](api/functions.rst).
+The documentation of individual functions is described in the [API documentation](docs/api/functions.rst).
 
 ### Tasks
 
@@ -47,8 +47,8 @@ for exam in root.iterdir():
         derived/"Glutamate_refined.nii.gz")
 ```
 
-The documentation of tasks is available in the [API documentation](api/tasks.rst).
+The documentation of tasks is available in the [API documentation](docs/api/tasks.rst).
 
 ### Visualization
 
-[FSLeyes](https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/) can load NIfTI images and display the Z-spectrum of a single voxel. The provided [layout file](_static/cest.txt) can be [added to the pre-defined of FSLeyes](https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html#layouts).
+[FSLeyes](https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/) can load NIfTI images and display the Z-spectrum of a single voxel. The provided [layout file](docs/_static/cest.txt) can be [added to the pre-defined of FSLeyes](https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html#layouts).
