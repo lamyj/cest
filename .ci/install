@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mamba install ants dicomifier fsleyes nibabel numpy scipy spire-pipeline pyyaml
