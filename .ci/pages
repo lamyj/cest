@@ -4,5 +4,8 @@ set -e
 set -u
 
 DIRECTORY=$1
+
+mamba install make sphinx furo
+
 make -C docs/ html
 cp -a docs/build/html/* "$DIRECTORY/"
