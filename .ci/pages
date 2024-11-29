@@ -5,9 +5,10 @@ set -u
 
 DIRECTORY=$1
 
-mamba install make sphinx furo
+$MAMBA_EXE install make sphinx furo
 
 make -C docs/ html
 
 mkdir "$DIRECTORY"
 cp -a docs/_build/html/* "$DIRECTORY/"
+touch "$DIRECTORY/.nojekyll"

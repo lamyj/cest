@@ -1,0 +1,33 @@
+name: Deploy to GitHub pages
+
+on:
+  push: 
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: 'bash -l {0}'
+    steps:
+      - name: Setup Micromamba
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          init-shell: bash powershell
+          environment-name: sycomore
+          create-args: python=3.11
+      - name: Checkout latest revision
+        uses: actions/checkout@v2
+      
+      - name: Set-up
+        run: ./.ci/install
+      - name: Build doc
+        run: ./.ci/pages public
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
+          clean: false
+          single-commit: true
