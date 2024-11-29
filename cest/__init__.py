@@ -1,3 +1,4 @@
+from . import pulses
 from .species import Species
 from . import species
 from .simulator import two_pools
