@@ -5,10 +5,11 @@ set -u
 
 DIRECTORY=$1
 
-$MAMBA_EXE install make sphinx furo
+mamba install \
+    dicomifier nibabel numpy scipy spire-pipeline \
+    make sphinx furo
 
 make -C docs/ html
 
 mkdir "$DIRECTORY"
 cp -a docs/_build/html/* "$DIRECTORY/"
-touch "$DIRECTORY/.nojekyll"

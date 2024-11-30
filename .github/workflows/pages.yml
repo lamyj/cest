@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: 'bash -l {0}'
+        shell: bash -el {0}
     steps:
-      - name: Setup Micromamba
-        uses: mamba-org/setup-micromamba@v1
+      - name: Setup Miniforge
+        uses: conda-incubator/setup-miniconda@v3
         with:
-          init-shell: bash powershell
-          environment-name: sycomore
-          create-args: python=3.11
+          miniforge-version: latest
+      
       - name: Checkout latest revision
         uses: actions/checkout@v2
       
-      - name: Set-up
-        run: ./.ci/install
       - name: Build doc
         run: ./.ci/pages public
+      
+      - name: Skip Jekyll processing when deploying
+        run: touch public/.nojekyll
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -31,3 +31,5 @@ jobs:
           folder: public
           clean: false
           single-commit: true
+          # NOTE: commits through default token do not trigger deployment
+          ssh-key: ${{ secrets.PAGES_DEPLOY_KEY }}
