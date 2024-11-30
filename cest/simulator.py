@@ -2,11 +2,20 @@ import numpy
 import scipy
 
 def two_pools(species_a, species_b, w, w1, duration, B0, Delta_B0=0):
-    """ w: frequency offset of the saturation RF pulse in Hz
-        w1: frequency of the B1 field of the saturation RF pulse in Hz
+    """ 
+    Parameters
+    ----------
+    
+    w: float
+        frequency offset of the saturation RF pulse in Hz
+    w1: float
+        frequency of the B1 field of the saturation RF pulse in Hz
+    duration: float
         duration in s
-        B0: nominal B0 field in Hz
-        Delta_B0: B0 offset in PPM
+    B0: float
+        nominal B0 field in Hz
+    Delta_B0: float, optional
+        B0 offset in PPM
     """
     R1a, R2a = 1/species_a.T1, 1/species_a.T2
     R1b, R2b = 1/species_b.T1, 1/species_b.T2

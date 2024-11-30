@@ -7,7 +7,7 @@ DIRECTORY=$1
 
 mamba install \
     dicomifier nibabel numpy scipy spire-pipeline \
-    make sphinx furo
+    furo make matplotlib sphinx
 
 make -C docs/ html
 

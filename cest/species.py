@@ -3,11 +3,12 @@ import dataclasses
 @dataclasses.dataclass
 class Species:
     """A chemical species, with the following parameters:
-       - T1 in s
-       - T2 in s
-       - w: frequency offset in PPM
-       - M0: equilibrium magnetization (unitless)
-       - k: exchange rate in Hz
+    
+    - T1 in s
+    - T2 in s
+    - w: frequency offset in PPM
+    - M0: equilibrium magnetization (unitless)
+    - k: exchange rate in Hz
     """
     T1: float
     T2: float
