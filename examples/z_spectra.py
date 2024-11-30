@@ -38,6 +38,10 @@ for name in ["glutamate", "creatine", "mobile_amides"]:
             M = cest.two_pools(species_a, species_b, w, w1, step, B0) @ M
         z_spectra[name][i] = M[2]
 
+mtrs = {}
+for name, z_spectrum in z_spectra.items():
+    mtrs[name] = cest.mtr(z_spectrum, w_ppm)
+    
 labels = {"glutamate": "Glu", "creatine": "Cr", "mobile_amides": "mAmides"}
 
 figure, plot = matplotlib.pyplot.subplots(layout="constrained")
@@ -49,3 +53,13 @@ plot.legend()
 plot.invert_xaxis()
 
 figure.savefig("z_spectra.png")
+
+figure, plot = matplotlib.pyplot.subplots(layout="constrained")
+for name, mtr in mtrs.items():
+    plot.plot(w_ppm[w_ppm>=0], mtr, label=labels[name])
+
+plot.set(ylim=0, xlabel=r"$\Delta\omega$ (ppm)", ylabel="MTR (unitless)")
+plot.legend()
+plot.invert_xaxis()
+
+figure.savefig("mtr.png")

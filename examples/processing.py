@@ -33,9 +33,6 @@ if "Water" in series:
     refined = cest.tasks.Refine(
         shifted.targets[0], shifted.file_dep[1], numpy.linspace(-5, 5, 501),
         derived/"Glutamate_refined.nii.gz")
-    reference = cest.tasks.ReferenceMap(
-        refined.targets[0], shifted.file_dep[1], 3,
-        derived/"Glutamate_reference_3ppm.nii.gz")
 
 derived = root/"derived"/"dummy"
 derived.mkdir(parents=True, exist_ok=True)
@@ -46,6 +43,10 @@ B0 = cest.tasks.WASSR(
 shifted = cest.tasks.ShiftSpectrum(
     images["Glutamate"], meta_data["Glutamate"], B0.targets[0],
     derived/"Glutamate_shifted.nii.gz")
+
+ppms = numpy.linspace(-5, 5, 501)
 refined = cest.tasks.Refine(
-    shifted.targets[0], shifted.file_dep[1], numpy.linspace(-5, 5, 501),
+    shifted.targets[0], shifted.file_dep[1], ppms,
     derived/"Glutamate_refined.nii.gz")
+
+mtr = cest.tasks.MTR(refined.targets[0], ppms, derived/"Glutatmate_MTR.nii.gz")

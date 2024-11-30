@@ -8,10 +8,11 @@ import spire
 from . import utils
 
 class WASSR(spire.TaskFactory):
-    """Compute a Z-spectrum shift map using the [WASSR]_ method.
+    """Compute a Z-spectrum shift map using the WASSR method.
     
     Parameters
     ----------
+    
     image : path_like
         Path to the source Z-spectrum image
     meta_data : path_like
@@ -26,7 +27,8 @@ class WASSR(spire.TaskFactory):
     
     References
     ----------
-    .. [WASSR] *Water saturation shift referencing (WASSR) for chemical \
+    
+    *Water saturation shift referencing (WASSR) for chemical \
         exchange saturation transfer (CEST) experiments*, Kim et al., Magnetic \
         Resonance in Medicine 61(6), 2009. \
         `doi:10.1002/mrm.21873 <https://doi.org/10.1002/mrm.21873>`_.

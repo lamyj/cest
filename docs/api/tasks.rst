@@ -6,3 +6,5 @@ Tasks
 .. autoclass:: cest.tasks.ShiftSpectrum
 
 .. autoclass:: cest.tasks.Refine
+
+.. autoclass:: cest.tasks.MTR
