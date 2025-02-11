@@ -1,3 +1,4 @@
 #!/bin/bash
 
-mamba install dicomifier eigen nibabel numpy pybond11 scipy spire-pipeline
+mamba install \
+    cmake dicomifier eigen nibabel ninja numpy pybind11 scipy spire-pipeline
