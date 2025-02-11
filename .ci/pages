@@ -5,9 +5,7 @@ set -u
 
 DIRECTORY=$1
 
-mamba install \
-    dicomifier nibabel numpy scipy spire-pipeline \
-    furo make matplotlib sphinx
+mamba install furo make matplotlib sphinx
 
 make -C docs/ html
 

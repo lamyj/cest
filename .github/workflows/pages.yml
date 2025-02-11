@@ -24,6 +24,9 @@ jobs:
       - name: Checkout latest revision
         uses: actions/checkout@v2
       
+      - name: Install requirements
+        run: ./.ci/build
+      
       - name: Build package
         run: ./.ci/build
       
