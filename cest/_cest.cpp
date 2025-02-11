@@ -78,6 +78,15 @@ two_pools(
     return (A*duration).exp();
 }
 
+/**
+ * @brief Simulation a shaped pulse using the two pools Bloch-McConnel model
+ * @param w Frequency offset of the saturation RF pulse in Hz
+ * @param w1 Frequency of the B1 field of the saturation RF pulse in Hz
+ * @param step Duration of a pulse step in s
+ * @param B0 Nominal B0 field in Hz
+ * @param M0 Initial magnetization
+ * @param Delta_B0 B0 offset in PPM
+ */
 Eigen::Vector7d
 two_pools(
     Species const & species_a, Species const & species_b,
@@ -115,6 +124,7 @@ PYBIND11_MODULE(_cest, m)
                 double,
                 double, double,
                 double>(&two_pools),
+        "Simulation using the two pools Bloch-McConnel model",
         "species_a"_a, "species_b"_a, "w"_a,
         "w1"_a,
         "duration"_a, "B0"_a,
@@ -126,6 +136,7 @@ PYBIND11_MODULE(_cest, m)
                 Eigen::VectorXd const &,
                 double, double,
                 Eigen::Vector7d const &, double>(&two_pools),
+        "Simulation a shaped pulse using the two pools Bloch-McConnel model",
         "species_a"_a, "species_b"_a, "w"_a,
         "w1"_a,
         "duration"_a, "B0"_a,

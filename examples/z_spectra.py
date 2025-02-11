@@ -33,9 +33,8 @@ for name in ["glutamate", "creatine", "mobile_amides"]:
     
     # NOTE: the frequency offset must be converted to Hz
     for i, w in enumerate(w_ppm*1e-6 * B0):
-        M = numpy.array([0, 0, species_a.M0, 0, 0, species_b.M0, 1])
-        for w1 in pulse:
-            M = cest.two_pools(species_a, species_b, w, w1, step, B0) @ M
+        M0 = numpy.array([0, 0, species_a.M0, 0, 0, species_b.M0, 1])
+        M = cest.two_pools(species_a, species_b, w, pulse, step, B0, M0)
         z_spectra[name][i] = M[2]
 
 mtrs = {}

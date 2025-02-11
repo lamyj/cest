@@ -44,3 +44,17 @@ Individual pulse steps can the be simulated with the :py:func:`two_pools <cest.t
                 w_ppm*1e-6 * B0, w1, step, B0
             ) @ M
     print(M[2])
+
+The whole pulse can also be simulated in one step using the same function. This will be quicker, but only return the final magnetization:
+
+.. code-block:: python
+    
+    # Magnetization of the two pools
+    M0 = numpy.array([
+        0, 0, cest.species.water.M0,
+        0, 0, cest.species.glutamate.M0,
+        1])
+    M = cest.two_pools(
+        cest.species.water, cest.species.glutamate,
+        w_ppm*1e-6 * B0, pulse, step, B0, M0)
+    print(M[2])
