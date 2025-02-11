@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+set -u
+
+INSTALL=${INSTALL:-$("${PYTHON}" -c "import sys; print(sys.exec_prefix)")}
+
+cmake \
+    -G Ninja -DPython_EXECUTABLE="${PYTHON}" -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${INSTALL}" \
+    -S . -B build
+cmake --build build --target install --config Release
