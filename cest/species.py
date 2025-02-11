@@ -1,20 +1,4 @@
-import dataclasses
-
-@dataclasses.dataclass
-class Species:
-    """A chemical species, with the following parameters:
-    
-    - T1 in s
-    - T2 in s
-    - w: frequency offset in PPM
-    - M0: equilibrium magnetization (unitless)
-    - k: exchange rate in Hz
-    """
-    T1: float
-    T2: float
-    w: float
-    M0: float
-    k: float
+from ._cest import Species
 
 water = Species(1.2, 40e-3, 0, 1, 0)
 
