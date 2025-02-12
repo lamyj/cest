@@ -1,0 +1,1 @@
+These examples reproduce the results of *Analysis of chemical exchange saturation transfer contributions from brain metabolites to the Z-spectra at various field strengths and pH*, by Khlebnikov et al. (Scientific Reports 9(1), 2019)

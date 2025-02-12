@@ -1,0 +1,1 @@
+These examples reproduce the results of *Numerical solution of the Bloch equations provides insights into the optimum design of PARACEST agents for MRI*, by Woessner et al. (Magnetic Resonance in Medicine, 53(4), 2005)
