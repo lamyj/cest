@@ -51,7 +51,7 @@ setuptools.command.build.build.sub_commands.append(("build_cmake", None))
 long_description = open(os.path.join(here, "README.md")).read()
 setuptools.setup(
     name="cest",
-    version="0.1.0",
+    version="0.2.0",
     
     description="CEST Toolbox",
     long_description=long_description,

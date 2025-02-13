@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project("cest" VERSION 0.1.0)
+project("cest" VERSION 0.2.0)
 
 option(BUILD_SHARED_LIBS "Build with shared libraries." ON)
 
