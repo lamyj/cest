@@ -10,10 +10,9 @@ MEDIA = media/z_spectra.png
 media:
 	mkdir $@
 
-media/z_spectra.png: ../examples/z_spectra.py
+media/z_spectra.png: ../examples/woessner_2005/figure_2.py
 	python3 $<
-	mv z_spectra.png media/
-	rm mtr.png
+	mv figure_2.png media/z_spectra.png
 
 html: Makefile media $(MEDIA)
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

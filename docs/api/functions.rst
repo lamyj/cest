@@ -6,7 +6,7 @@ Simulation
 
 .. autoclass:: cest.Species
 
-.. autofunction:: cest.two_pools
+.. autofunction:: cest.bm
 
 Pulses
 ......
