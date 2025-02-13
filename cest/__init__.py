@@ -1,7 +1,5 @@
 from . import pulses
-from .species import Species
-from . import species
-from ._cest import bm
+from ._cest import Species, bm
 
 from .functions import *
 from . import tasks
