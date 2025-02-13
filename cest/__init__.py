@@ -1,7 +1,7 @@
 from . import pulses
 from .species import Species
 from . import species
-from ._cest import two_pools
+from ._cest import bm
 
 from .functions import *
 from . import tasks
