@@ -19,7 +19,8 @@ def get_ppm(path):
     ppm = None
     
     if "SaturationPulse" in meta_data:
-        ppm = [x["FrequencyOffset"] for x in meta_data["SaturationPulse"]]
+        ppm = numpy.array(
+            [x["FrequencyOffset"] for x in meta_data["SaturationPulse"]])
     elif "EncapsulatedDocument" in meta_data:
         encapsulated = base64.b64decode(meta_data["EncapsulatedDocument"][0])
         if encapsulated[-1] == 0:
